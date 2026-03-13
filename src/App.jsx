@@ -37,10 +37,21 @@ export default function App() {
     </div>
   )
 
-  return (
+return (
     <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#fff' }}>
-      <div style={{ background: '#1a1a2e', color: '#fff', padding: '12px 16px', fontWeight: 700, fontSize: '16px', textAlign: 'center' }}>
-        P&L Financiero
+      <div style={{
+        background: '#305496',
+        color: '#fff',
+        padding: '10px 20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
+        <img src="/logo_nacer.png" alt="Nacer Global" style={{ height: '36px', objectFit: 'contain' }} />
+        <div style={{ fontWeight: 700, fontSize: '18px', letterSpacing: '0.5px' }}>
+          Estado de Resultados
+        </div>
+        <div style={{ width: '120px' }} />
       </div>
       <Filtros filtros={filtros} setFiltros={setFiltros} opciones={opciones} />
       <TablaPnL filtros={filtros} />
