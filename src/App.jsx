@@ -3,12 +3,24 @@ import { supabase } from './supabase'
 import Filtros from './Filtros'
 import TablaPnL from './TablaPnL'
 
+const TOKEN_VALIDO = import.meta.env.VITE_ACCESS_TOKEN
+
+function tokenEnURL() {
+  const params = new URLSearchParams(window.location.search)
+  return params.get('key')
+}
+
 export default function App() {
   const [opciones, setOpciones] = useState({ anos: [], meses: [], instituciones: [], escenarios: [] })
   const [filtros, setFiltros] = useState(null)
+  const [acceso, setAcceso] = useState(false)
 
   useEffect(() => {
-    cargarOpciones()
+    const key = tokenEnURL()
+    if (key === TOKEN_VALIDO) {
+      setAcceso(true)
+      cargarOpciones()
+    }
   }, [])
 
   async function cargarOpciones() {
@@ -31,13 +43,28 @@ export default function App() {
     })
   }
 
+  if (!acceso) return (
+    <div style={{
+      fontFamily: 'Inter, system-ui, sans-serif',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: '#f8f9fa',
+      color: '#666',
+      fontSize: '14px'
+    }}>
+      Acceso no autorizado.
+    </div>
+  )
+
   if (!filtros) return (
     <div style={{ fontFamily: 'Inter, system-ui, sans-serif', padding: '32px', textAlign: 'center' }}>
       Cargando...
     </div>
   )
 
-return (
+  return (
     <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#fff' }}>
       <div style={{
         background: '#305496',
