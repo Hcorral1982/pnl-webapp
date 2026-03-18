@@ -57,6 +57,7 @@ export default function TablaPnL({ filtros }) {
   const [abiertos, setAbiertos] = useState({})
   const [acumulado, setAcumulado] = useState(true)
   const [enMillones, setEnMillones] = useState(true)
+ 
 
   useEffect(() => {
     if (!filtros?.escenarioBase) return
@@ -235,7 +236,10 @@ export default function TablaPnL({ filtros }) {
           </tr>,
           abiertoN2 && nivel3s.map(f => (
             <tr key={f.cta_cod} style={{ background: '#fff', fontWeight: 400 }}>
-              <td style={{ ...s.tdLeft, paddingLeft: '48px' }}>{f.cta3}</td>
+              <td style={{ ...s.tdLeft, paddingLeft: '48px' }}>
+  <span style={{ color: '#888', fontSize: '11px', marginRight: '6px' }}>{f.cta_cod}</span>
+  {f.cta3}
+</td>
               <td style={{ ...s.td, color: colorVar(f.valor, n1) }}>{fmt(f.valor, false, enMillones)}</td>
               {filasComp.map((comp, i) => {
                 const compF = comp.filas.find(cf => cf.cta_cod === f.cta_cod)
@@ -262,6 +266,7 @@ export default function TablaPnL({ filtros }) {
           <button onClick={() => setEnMillones(false)} style={btnStyle(!enMillones)}>Miles</button>
         </div>
       </div>
+      
 
       <div style={{ overflowX: 'auto' }}>
         <table style={s.tabla}>
