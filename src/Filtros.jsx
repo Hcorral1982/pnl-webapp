@@ -125,7 +125,7 @@ export default function Filtros({ filtros, setFiltros, opciones }) {
 
       <div style={s.group}>
         <span style={s.label}>Escenario Base</span>
-        <select style={s.select} value={filtros.escenarioBase} onChange={e => updateBase('escenarioBase', e.target.value)}>
+        <select style={s.select} value={filtros.escenarioBase} onChange={e => updateBase('escenarioBase', e.target.value.trim())}>
           {escenarios.map(e => <option key={e} value={e}>{e}</option>)}
         </select>
       </div>
@@ -140,7 +140,7 @@ export default function Filtros({ filtros, setFiltros, opciones }) {
               <select style={s.select} value={comp.ano} onChange={e => updateComparacion(i, 'ano', parseInt(e.target.value))}>
                 {anos.map(a => <option key={a} value={a}>{a}</option>)}
               </select>
-              <select style={s.select} value={comp.escenario} onChange={e => updateComparacion(i, 'escenario', e.target.value)}>
+              <select style={s.select} value={comp.escenario} onChange={e => updateComparacion(i, 'escenario', e.target.value.trim())}>
                 {escenarios.map(e => <option key={e} value={e}>{e}</option>)}
               </select>
               <button style={s.btnRemove} onClick={() => removeComparacion(i)}>✕</button>
