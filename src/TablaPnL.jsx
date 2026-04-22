@@ -94,14 +94,6 @@ export default function TablaPnL({ filtros }) {
         p_escenario: comp.escenario,
         p_acumulado: acumulado,
       })
-        console.log('COMP params:', JSON.stringify({
-        p_ano: comp.ano,
-        p_mes: filtros.mes,
-        p_instituciones: insts,
-        p_escenario: comp.escenario,
-        p_acumulado: acumulado,
-      }))
-      console.log('COMP result:', JSON.stringify(dataComp), 'error:', errComp)
       if (!errComp) comps.push({ label: `${comp.ano} ${comp.escenario}`, filas: dataComp || [] })
     }
     setFilasComp(comps)
