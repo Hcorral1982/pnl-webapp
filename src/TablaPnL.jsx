@@ -94,6 +94,7 @@ export default function TablaPnL({ filtros }) {
         p_escenario: comp.escenario,
         p_acumulado: acumulado,
       })
+        console.log('COMP', comp.ano, comp.escenario, 'data:', dataComp, 'error:', errComp)
       if (!errComp) comps.push({ label: `${comp.ano} ${comp.escenario}`, filas: dataComp || [] })
     }
     setFilasComp(comps)
