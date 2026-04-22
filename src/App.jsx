@@ -31,7 +31,7 @@ export default function App() {
       anos: d.anos || [],
       meses: (d.meses || []).map(m => ({ num: m.num, desc: m.desc })),
       instituciones: d.instituciones || [],
-      escenarios: d.escenarios || [],
+      escenarios: (d.escenarios || []).map(e => e.trim()),
     }
     setOpciones(ops)
     setFiltros({
